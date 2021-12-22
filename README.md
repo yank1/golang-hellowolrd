@@ -27,8 +27,8 @@ make
 ```
 
 Access the Helloword by :
-* curl http://localhost:8080/ping
-* Open Browser at http://localhost:8080/ping
+* curl http://localhost:8080/v1/ping
+* Open Browser at http://localhost:8080/v1/ping
 * echo grpccurl ****
 * echo View API document by ***
 

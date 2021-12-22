@@ -7,19 +7,9 @@ import (
 	"github.com/yank1/golang-helloworld/pkg/helloworld"
 	// pb "github.com/yank1/golang-helloworld/pkg/helloworld"
 
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"google.golang.org/protobuf/types/known/emptypb"
 )
-
-// server is used to implement helloworld.GreeterServer.
-type server struct{}
-
-// SayHello implements helloworld.GreeterServer
-func (s *server) Ping(context.Context, *emptypb.Empty) (*helloworld.PongResponse, error) {
-	return &helloworld.PongResponse{Message: "Hello World"}, nil
-}
 
 // grpcurl  -plaintext 127.0.0.1:50051 helloworld.Helloworld.Ping
 func _main() {
