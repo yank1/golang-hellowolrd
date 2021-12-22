@@ -13,15 +13,28 @@ It would provide a GRPC,JSON,Swagger Web Interface.
 
 ### Compile and Run
 
+#### Build
 ```
 git clone https://github.com/yank1/golang-hellowolrd.git
 cd golang-hellowolrd
 make
-RUN COMMAND
-echo Access the Helloword by :
-echo curl ****
-echo grpccurl ****
-echo View API document by ***
+```
+
+#### Run
+
+```
+./bin/golang-hellowolrd
+```
+
+Access the Helloword by :
+* curl http://localhost:8080/ping
+* Open Browser at http://localhost:8080/ping
+* echo grpccurl ****
+* echo View API document by ***
+
+#### Run for develop
+```
+go run cmd/main.go
 ```
 
 ### UnitTest
