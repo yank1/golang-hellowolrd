@@ -7,4 +7,4 @@ set -e
 
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:~/go/bin/
 
-protoc -I . -I /usr/include --go_out=plugins=grpc:pkg ./api/proto/*/*.proto
+protoc -I=".:/usr/include" --go_out=plugins=grpc:./api/proto/v1  ./api/proto/v1/helloworld.proto

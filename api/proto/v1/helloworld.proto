@@ -1,18 +1,21 @@
 syntax = "proto3";
 
-option go_package = "github.com/yank1/golang-helloworld/helloworld";
+option go_package = "/";
 
-import "google/protobuf/empty.proto";
+// import "google/protobuf/empty.proto";
 
 package helloworld;
 
 // The greeting service definition.
-service Ping {
+service Helloworld {
   // Sends a greeting
-  rpc Ping (google.protobuf.Empty) returns (PongResponse) {}
+  rpc Ping (PingRequest) returns (PongResponse) {}
 }
 
-
+// The request message containing the user's name.
+message PingRequest {
+  string name = 1;
+}
 // The response message containing the greetings
 message PongResponse {
   string message = 1;
