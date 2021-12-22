@@ -1,21 +1,21 @@
 syntax = "proto3";
 
-option go_package = "/";
+option go_package = "/helloworld";
 
-// import "google/protobuf/empty.proto";
+import "google/protobuf/empty.proto";
 
 package helloworld;
 
 // The greeting service definition.
 service Helloworld {
   // Sends a greeting
-  rpc Ping (PingRequest) returns (PongResponse) {}
+  rpc Ping (google.protobuf.Empty) returns (PongResponse) {}
 }
 
 // The request message containing the user's name.
-message PingRequest {
-  string name = 1;
-}
+// message PingRequest {
+//   string name = 1;
+// }
 // The response message containing the greetings
 message PongResponse {
   string message = 1;
