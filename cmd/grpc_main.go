@@ -22,8 +22,8 @@ func (s *server) Ping(context.Context, *emptypb.Empty) (*helloworld.PongResponse
 }
 
 // grpcurl  -plaintext 127.0.0.1:50051 helloworld.Helloworld.Ping
-func main() {
-	lis, err := net.Listen("tcp", ":50051")
+func _main() {
+	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
