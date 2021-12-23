@@ -20,3 +20,4 @@ mv ./api/proto/v1/helloworld.pb.gw.go ./pkg/helloworld
 protoc -I. \
       -I=".:/usr/include:./internal/vender/proto" --openapiv2_out=. ./api/proto/v1/helloworld.proto
 mv ./api/proto/v1/helloworld.swagger.json ./api/swagger/v1/helloworld.swagger.json
+cp ./api/swagger/v1/helloworld.swagger.json assets/swagger-ui/helloworld.swagger.json 

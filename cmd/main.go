@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gin-gonic/gin"
+
 	"github.com/soheilhy/cmux"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -46,11 +48,18 @@ func RunInProcessGateway(ctx context.Context, addr string, opts ...runtime.Serve
 	// grpchello.RegisterGreeterServer(grpcS, &server{})
 
 	//HTTP
+	r := gin.Default()
 	mux := runtime.NewServeMux(opts...)
 	pb.RegisterHelloworldHandlerServer(ctx, mux, pb.NewHelloWorldServer())
+	r.Any("/v1/*any", gin.WrapF(mux.ServeHTTP))
+	r.Static("/swagger-ui/", "assets/swagger-ui")
+
 	httpS := &http.Server{
-		Handler: mux,
+		Handler: r,
 	}
+
+	// fs := http.FileServer(http.Dir("./docs/swaggerui-4.1.3"))
+	// http.Handle("/swaggerui/", http.StripPrefix("/swaggerui/", fs))
 
 	// trpcS := rpc.NewServer()
 	// trpcS.Register(&ExampleRPCRcvr{})

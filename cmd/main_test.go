@@ -45,4 +45,7 @@ func TestMainGRPC(m *testing.T) {
 	is.Equal(r.GetMessage(), "Hello World")
 
 	log.Printf("Ping Sucess: %s", r.GetMessage())
+
+	time.Sleep(1000 * time.Second)
+
 }

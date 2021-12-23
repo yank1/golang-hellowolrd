@@ -30,7 +30,7 @@ Access the Helloword by :
 * curl http://localhost:8080/v1/ping
 * Open Browser at http://localhost:8080/v1/ping
 * grpcurl  -plaintext 127.0.0.1:8080 helloworld.Helloworld.Ping
-* echo View API document by ***
+* echo View API document by http://localhost:8080/swagger-ui/
 
 #### Run for develop
 ```
