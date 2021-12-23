@@ -7,11 +7,7 @@
 package helloworld
 
 import (
-	context "context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -164,86 +160,4 @@ func file_api_proto_v1_helloworld_proto_init() {
 	file_api_proto_v1_helloworld_proto_rawDesc = nil
 	file_api_proto_v1_helloworld_proto_goTypes = nil
 	file_api_proto_v1_helloworld_proto_depIdxs = nil
-}
-
-// Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConnInterface
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
-
-// HelloworldClient is the client API for Helloworld service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type HelloworldClient interface {
-	// Sends a greeting
-	Ping(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PongResponse, error)
-}
-
-type helloworldClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewHelloworldClient(cc grpc.ClientConnInterface) HelloworldClient {
-	return &helloworldClient{cc}
-}
-
-func (c *helloworldClient) Ping(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*PongResponse, error) {
-	out := new(PongResponse)
-	err := c.cc.Invoke(ctx, "/helloworld.Helloworld/Ping", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// HelloworldServer is the server API for Helloworld service.
-type HelloworldServer interface {
-	// Sends a greeting
-	Ping(context.Context, *emptypb.Empty) (*PongResponse, error)
-}
-
-// UnimplementedHelloworldServer can be embedded to have forward compatible implementations.
-type UnimplementedHelloworldServer struct {
-}
-
-func (*UnimplementedHelloworldServer) Ping(context.Context, *emptypb.Empty) (*PongResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
-}
-
-func RegisterHelloworldServer(s *grpc.Server, srv HelloworldServer) {
-	s.RegisterService(&_Helloworld_serviceDesc, srv)
-}
-
-func _Helloworld_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HelloworldServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/helloworld.Helloworld/Ping",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HelloworldServer).Ping(ctx, req.(*emptypb.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _Helloworld_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "helloworld.Helloworld",
-	HandlerType: (*HelloworldServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Ping",
-			Handler:    _Helloworld_Ping_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/proto/v1/helloworld.proto",
 }
