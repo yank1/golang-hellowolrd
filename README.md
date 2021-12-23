@@ -51,6 +51,7 @@ make release # build image and release
 
 ### Run in Docker/Kubernetes
 
+TODO
 ```
 docker run *******
 kubectl run ********
