@@ -29,7 +29,7 @@ make
 Access the Helloword by :
 * curl http://localhost:8080/v1/ping
 * Open Browser at http://localhost:8080/v1/ping
-* echo grpccurl ****
+* grpcurl  -plaintext 127.0.0.1:8080 helloworld.Helloworld.Ping
 * echo View API document by ***
 
 #### Run for develop
