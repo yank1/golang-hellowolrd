@@ -25,3 +25,15 @@ build: $(BINDIR)/$(BINNAME)
 
 $(BINDIR)/$(BINNAME): $(SRC)
 	GO111MODULE=on go build $(GOFLAGS) -trimpath -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o '$(BINDIR)'/$(BINNAME) ./cmd
+
+
+# ------------------------------------------------------------------------------
+#  test
+
+.PHONY: test
+test: test-unit
+.PHONY: test-unit
+test-unit:
+	@echo
+	@echo "==> Running unit tests <=="
+	GO111MODULE=on go test $(GOFLAGS) -run $(TESTS) $(PKG) $(TESTFLAGS)

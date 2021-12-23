@@ -35,7 +35,7 @@ func RunInProcessGateway(ctx context.Context, addr string, opts ...runtime.Serve
 	grpcL := m.Match(cmux.HTTP2())
 	httpL := m.Match(cmux.HTTP1Fast())
 
-	gin = cmux.HTTP1HeaderFieldPrefix('path','/v1/hahaha')
+	// gin = cmux.HTTP1HeaderFieldPrefix('path','/v1/hahaha')
 	// trpcL := m.Match(cmux.Any()) // Any means anything that is not yet matched.
 
 	// Create your protocol servers.
