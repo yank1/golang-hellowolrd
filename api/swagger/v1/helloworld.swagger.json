@@ -48,7 +48,7 @@
           "type": "string"
         }
       },
-      "title": "The request message containing the user's name.\r\nmessage PingRequest {\r\n  string name = 1;\r\n}\r\nThe response message containing the greetings"
+      "title": "The request message containing the user's name.\nmessage PingRequest {\n  string name = 1;\n}\nThe response message containing the greetings"
     },
     "protobufAny": {
       "type": "object",
