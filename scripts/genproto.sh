@@ -22,9 +22,12 @@ mv ./api/proto/v1/helloworld.pb.gw.go ./pkg/helloworld
 
 # OpenAPI
 
-protoc -I. \
-      -I=".:./internal/vender/proto" --openapiv2_out=. ./api/proto/v1/helloworld.proto
+protoc -I=".:./internal/vender/proto" --openapiv2_out=. ./api/proto/v1/helloworld.proto
 mv ./api/proto/v1/helloworld.swagger.json ./api/swagger/v1/helloworld.swagger.json
 cp ./api/swagger/v1/helloworld.swagger.json assets/swagger-ui/helloworld.swagger.json 
 
 # Typescript
+
+cd ./api/proto/v1/
+protoc -I=".:./../../../internal/vender/proto" --grpc-gateway-ts_out=. helloworld.proto
+cd ../../../
